@@ -1,0 +1,15 @@
+C:\Users\Byte\source\repos\PomodoroTimer\bin\Debug\net6.0\PomodoroTimer.exe
+C:\Users\Byte\source\repos\PomodoroTimer\bin\Debug\net6.0\PomodoroTimer.deps.json
+C:\Users\Byte\source\repos\PomodoroTimer\bin\Debug\net6.0\PomodoroTimer.runtimeconfig.json
+C:\Users\Byte\source\repos\PomodoroTimer\bin\Debug\net6.0\PomodoroTimer.dll
+C:\Users\Byte\source\repos\PomodoroTimer\bin\Debug\net6.0\PomodoroTimer.pdb
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\PomodoroTimer.csproj.AssemblyReference.cache
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\PomodoroTimer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\PomodoroTimer.AssemblyInfoInputs.cache
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\PomodoroTimer.AssemblyInfo.cs
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\PomodoroTimer.csproj.CoreCompileInputs.cache
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\PomodoroTimer.dll
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\refint\PomodoroTimer.dll
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\PomodoroTimer.pdb
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\PomodoroTimer.genruntimeconfig.cache
+C:\Users\Byte\source\repos\PomodoroTimer\obj\Debug\net6.0\ref\PomodoroTimer.dll

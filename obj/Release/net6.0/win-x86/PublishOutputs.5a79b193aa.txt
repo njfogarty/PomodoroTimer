@@ -1,0 +1,2 @@
+C:\Users\Byte\source\repos\PomodoroTimer\bin\publish\PomodoroTimer.pdb
+C:\Users\Byte\source\repos\PomodoroTimer\bin\publish\PomodoroTimer.exe
