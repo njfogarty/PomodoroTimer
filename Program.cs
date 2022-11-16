@@ -36,6 +36,7 @@ bool repeatConfig = true;
 
 #region welcome_message
 Console.Title = "Pomodoro - Hello! ^-^";
+
 Console.WriteLine($"Pomodoro Timer - Version {version}");
 
 Console.Write("Press any key to begin configuration...");
@@ -45,90 +46,89 @@ Console.ReadKey(true);
 #region practical_program
 while (repeatConfig)
 {
-    shouldRepeat = true;
-    invalidCheckPassed = false;
     #region user_configuration
     Console.Clear();
     Console.Title = "Pomodoro - Configuration...";
 
     Console.WriteLine("Would you like to use the traditional Pomodoro values?");
     Console.Write("Y/N?: ");
+
+    invalidCheckPassed = false;
     while (!invalidCheckPassed)
     {
         userConfigChoice = Console.ReadLine();
-
-        if (userConfigChoice == "Yes" || userConfigChoice == "yes" || userConfigChoice == "Y" ||
-            userConfigChoice == "y")
-        {
-            invalidCheckPassed = true;
-            
-            workMinutes = 25 * 60000;
-            breakMinutes = 5 * 60000;
-            repeatAmount = 4;
-        }
         
-        else if (userConfigChoice == "No" || userConfigChoice == "no" || userConfigChoice == "N" ||
-                 userConfigChoice == "n")
+        switch (userConfigChoice)
         {
-            invalidCheckPassed = true;
-            
-            Console.Write("\nHow many minutes would you like each work session to be?: ");
-            workMinutes = Convert.ToSingle(Console.ReadLine()) * 60000;
+            case "Yes":
+            case "yes":
+            case "Y":
+            case "y":
+                workMinutes = 25 * 60000;
+                breakMinutes = 5 * 60000;
+                repeatAmount = 4;
+                invalidCheckPassed = true;
+                break;
 
-            while (workMinutes <= 0)
-            {
-                Console.Write("Invalid answer, value must be higher than 0: ");
+            case "No":
+            case "no":
+            case "N":
+            case "n":
+                Console.Write("\nHow many minutes would you like each work session to be?: ");
                 workMinutes = Convert.ToSingle(Console.ReadLine()) * 60000;
-            }
-            
-            Console.Write("\nHow many minutes would you like each break session to be?: ");
-            breakMinutes = Convert.ToSingle(Console.ReadLine()) * 60000;
-            while (breakMinutes <= 0)
-            {
-                Console.Write("Invalid answer, value must be higher than 0: ");
+
+                Console.Write("\nHow many minutes would you like each break session to be?: ");
                 breakMinutes = Convert.ToSingle(Console.ReadLine()) * 60000;
-            }
-            
-            Console.Write("\nHow many times would you like to repeat?: ");
-            repeatAmount = Convert.ToInt32(Console.ReadLine());
-            while (repeatAmount < 1)
-            {
-                Console.Write("Invalid answer, value must be 1 or higher: ");
+
+                Console.Write("\nHow many times would you like to repeat?: ");
                 repeatAmount = Convert.ToInt32(Console.ReadLine());
-            }
+                invalidCheckPassed = true;
+                break;
+
+            default:
+                Console.Write("Invalid answer, try again: ");
+                break;
         }
-        
-        else Console.Write("Invalid answer, try again: ");
     }
 
     // Asks user whether they should be prompted to press a key before starting each timer.
     Console.Clear();
-    invalidCheckPassed = false;
+    Console.Title = "Pomodoro - Configuration...";
+    
     Console.WriteLine("Would you like to be prompted before each timer starts?");
     Console.Write("Y/N?: ");
+
+    invalidCheckPassed = false;
     while (!invalidCheckPassed)
     {
         userConfigChoice = Console.ReadLine();
-
-        if (userConfigChoice == "Yes" || userConfigChoice == "yes" || userConfigChoice == "Y" ||
-            userConfigChoice == "y")
+        switch (userConfigChoice)
         {
-            invalidCheckPassed = true;
-            shouldWait = true;
+           case "Yes":
+           case "yes": 
+           case "Y":
+           case "y":
+               shouldWait = true;
+               invalidCheckPassed = true;
+               break;
+           
+           case "No":
+           case "no":
+           case "N":
+           case "n":
+               shouldWait = false;
+               invalidCheckPassed = true;
+               break;
+           
+           default:
+               Console.Write("Invalid answer, try again: ");
+               break;
         }
-        
-        else if (userConfigChoice == "No" || userConfigChoice == "no" || userConfigChoice == "N" ||
-                 userConfigChoice == "n")
-        {
-            invalidCheckPassed = true;
-            shouldWait = false;
-        }
-        
-        else Console.Write("Invalid answer, try again: ");
     }
     #endregion
 
     #region main_logic
+    shouldRepeat = true;
     while (shouldRepeat)
     {
         invalidCheckPassed = false;
@@ -140,108 +140,132 @@ while (repeatConfig)
             // Work timer.
             if (shouldWait)
             {
-                Console.Title = "Pomodoro - Waiting...";
                 Console.Clear();
+                Console.Title = "Pomodoro - Waiting...";
+                
                 Console.Write("Press any key to start the timer...");
                 Console.ReadKey(true);
             }
 
             Console.Clear();
-            amountRepeated++;
             Console.Title = "Pomodoro - Working...";
+            
             Console.WriteLine("Currently working...");
+            
             Thread.Sleep((int)workMinutes);
             Console.Beep(440, 1000);
 
             // Break timer.
             if (shouldWait)
             {
-                Console.Title = "Pomodoro - Waiting...";
                 Console.Clear();
+                Console.Title = "Pomodoro - Waiting...";
+                
                 Console.Write("Press any key to start the timer...");
                 Console.ReadKey(true);
             }
 
             Console.Clear();
             Console.Title = "Pomodoro - Breaking...";
+            
             Console.WriteLine("Currently breaking...");
+            
             Thread.Sleep((int)breakMinutes);
             Console.Beep(220, 1000);
+            
+            amountRepeated++;
         }
 
+        amountRepeated = 0;
         #endregion
 
         #region repeat_question_current
         Console.Clear();
         Console.Title = "Pomodoro - Repeat?";
+        
         Console.WriteLine("Would you like to repeat with the current settings?");
         Console.Write("Y/N?: ");
 
+        invalidCheckPassed = false;
         while (!invalidCheckPassed)
         {
             userConfigChoice = Console.ReadLine();
-            
-            if (userConfigChoice == "Yes" || userConfigChoice == "yes" || userConfigChoice == "Y" ||
-                userConfigChoice == "y")
-            {
-                shouldRepeat = true;
-                amountRepeated = 0;
-                invalidCheckPassed = true;
-            }
-            
-            else if (userConfigChoice == "No" || userConfigChoice == "no" || userConfigChoice == "N" ||
-                     userConfigChoice == "n")
-            {
-                shouldRepeat = false;
-                invalidCheckPassed = true;
-            }
-            
-            else Console.Write("Invalid answer, try again: ");
-        }
 
+            switch (userConfigChoice)
+            {
+                case "Yes":
+                case "yes":
+                case "Y":
+                case "y":
+                    shouldRepeat = true;
+                    invalidCheckPassed = true;
+                    break;
+                
+                case "No":
+                case "no":
+                case "N":
+                case "n":
+                    shouldRepeat = false;
+                    invalidCheckPassed = true;
+                    break;
+                
+                default:
+                    Console.Write("Invalid answer, try again: ");
+                    break;
+            }
+        }
         #endregion
+        
         #region repeat_question_different
         if (!shouldRepeat)
         {
-            invalidCheckPassed = false;
             Console.Clear();
+            Console.Title = "Pomodoro - Repeat?";
+            
             Console.WriteLine("Would you like to repeat with different settings?");
             Console.Write("Y/N?: ");
 
+            invalidCheckPassed = false;
             while (!invalidCheckPassed)
             {
                 userConfigChoice = Console.ReadLine();
 
-                if (userConfigChoice == "Yes" || userConfigChoice == "yes" || userConfigChoice == "Y" ||
-                    userConfigChoice == "y")
+                switch (userConfigChoice)
                 {
-                    repeatConfig = true;
-                    amountRepeated = 0;
-                    invalidCheckPassed = true;
+                    case "Yes":
+                    case "yes": 
+                    case "Y":
+                    case "y":
+                        repeatConfig = true;
+                        invalidCheckPassed = true;
+                        break;
+                    
+                    case "No":
+                    case "no": 
+                    case "N":
+                    case "n":
+                        repeatConfig = false;
+                        invalidCheckPassed = true;
+                        break;
+                    
+                    default:
+                        Console.Write("Invalid answer, try again: ");
+                        break;
                 }
-                
-                else if (userConfigChoice == "No" || userConfigChoice == "no" || userConfigChoice == "N" ||
-                         userConfigChoice == "n")
-                {
-                    repeatConfig = false;
-                    invalidCheckPassed = true;
-                }
-
-                else Console.Write("Invalid answer, try again: ");
             }
         }
         #endregion
     }
-
-    invalidCheckPassed = false;
     #endregion
 }
 #endregion
 
 #region exit_program
-Console.Title = "Pomodoro - Goodbye... ;-;";
 Console.Clear();
+Console.Title = "Pomodoro - Goodbye... ;-;";
+
 Console.Write("Thank you for using me!");
 Console.Write("\n\nPress any key to exit...");
+
 Console.ReadKey(true);
 #endregion

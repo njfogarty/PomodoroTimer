@@ -1,8 +1,6 @@
 C:\Users\Byte\source\repos\PomodoroTimer\bin\Release\net6.0\win-x86\PomodoroTimer.deps.json
 C:\Users\Byte\source\repos\PomodoroTimer\bin\Release\net6.0\win-x86\PomodoroTimer.runtimeconfig.json
 C:\Users\Byte\source\repos\PomodoroTimer\bin\Release\net6.0\win-x86\PomodoroTimer.exe
-C:\Users\Byte\source\repos\PomodoroTimer\bin\Release\net6.0\win-x86\PomodoroTimer.dll.manifest
-C:\Users\Byte\source\repos\PomodoroTimer\bin\Release\net6.0\win-x86\PomodoroTimer.application
 C:\Users\Byte\source\repos\PomodoroTimer\bin\Release\net6.0\win-x86\PomodoroTimer.dll
 C:\Users\Byte\source\repos\PomodoroTimer\bin\Release\net6.0\win-x86\PomodoroTimer.pdb
 C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\PomodoroTimer.csproj.AssemblyReference.cache
@@ -11,8 +9,6 @@ C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\PomodoroTime
 C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\PomodoroTimer.AssemblyInfo.cs
 C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\PomodoroTimer.csproj.CoreCompileInputs.cache
 C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\PomodoroTimer.genruntimeconfig.cache
-C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\PomodoroTimer.dll.manifest
-C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\PomodoroTimer.application
 C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\PomodoroTimer.dll
 C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\refint\PomodoroTimer.dll
 C:\Users\Byte\source\repos\PomodoroTimer\obj\Release\net6.0\win-x86\PomodoroTimer.pdb
