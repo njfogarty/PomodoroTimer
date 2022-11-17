@@ -4,22 +4,10 @@
 // Description: A simple command-line driven timer especially designed for the pomodoro technique.
 // Author: Noah Fogarty
 // Created: 13-Nov-2022
-string version = "1.1.2";
+string version = "1.1.3";
 
 Console.Title = "Pomodoro Timer";
 
-#region changelog
-// KNOWN BUGS:
-// 1. When user inputs a fractional value when asked how many times the timer should repeat an unhandled exception is thrown.
-
-// CHANGELOG: v1.1.2
-// Added: Option to repeat timer with different settings.
-// Bugfix: Made it so you can't specify a value of 0 or below for some configuration settings.
-
-// CHANGELOG: v1.1.0 
-// Added: Option to have the program ask user to press a key before beginning each timer. User can toggle this option during the initial configuration phase.
-// Changed: Cleaned up some code a little bit. | Removed an unnecessary variable and made certain parts of the code more uniform with each other, while also shaving off a few unnecessary lines.
-#endregion
 #endregion
 
 #region variables
