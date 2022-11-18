@@ -1,5 +1,4 @@
-﻿
-#region software_information
+﻿#region software_information
 // Title: Pomodoro Timer
 // Description: A simple command-line driven timer especially designed for the pomodoro technique.
 // Author: Noah Fogarty
@@ -13,8 +12,6 @@ Console.Title = "Pomodoro Timer";
 #region variables
 int workMinutes = 25;
 int breakMinutes = 5;
-int minutesWorked = workMinutes;
-int secondCounter = 0;
 int repeatAmount = 4;
 int amountRepeated = 0;
 string userConfigChoice = "Yes";
@@ -127,80 +124,20 @@ while (repeatConfig)
 
         while (amountRepeated != repeatAmount)
         {
-            minutesWorked = workMinutes;
             
-            if (shouldWait)
-            {
-                Console.Clear();
-                Console.Title = "Pomodoro - Waiting...";
-                
-                Console.Write("Press any key to start the timer...");
-                Console.ReadKey(true);
-            }
-
+            Wait(shouldWait);
+            
             Console.Clear();
             Console.Title = "Pomodoro - Working...";
-            
-            // Work timer.
-            while (minutesWorked >= 0)
-            {
-                if (minutesWorked == 1 && secondCounter == 1) 
-                    Console.Write($"\r{minutesWorked} minute and {secondCounter} second left.     ");
-                else if (minutesWorked == 1) 
-                    Console.Write($"\r{minutesWorked} minute and {secondCounter} seconds left.     ");
-                else if (secondCounter == 1) 
-                    Console.Write($"\r{minutesWorked} minutes and {secondCounter} second left.     ");
-                else 
-                    Console.Write($"\r{minutesWorked} minutes and {secondCounter} seconds left.     ");
-                if (secondCounter == 0)
-                {
-                    secondCounter = 60;
-                    minutesWorked--;
-                }
-                Thread.Sleep(1000);
-                secondCounter--;
-            }
 
-            Console.Beep(440, 1000);
+            Timer(workMinutes);
 
-            secondCounter = 0;
-
-            if (shouldWait)
-            {
-                Console.Clear();
-                Console.Title = "Pomodoro - Waiting...";
-                
-                Console.Write("Press any key to start the timer...");
-                Console.ReadKey(true);
-            }
+            Wait(shouldWait);
 
             Console.Clear();
             Console.Title = "Pomodoro - Resting...";
-            
-            // Break timer.
-            minutesWorked = breakMinutes;
-            while (minutesWorked >= 0)
-            {
-                if (minutesWorked == 1 && secondCounter == 1) 
-                    Console.Write($"\r{minutesWorked} minute and {secondCounter} second left.     ");
-                else if (minutesWorked == 1) 
-                    Console.Write($"\r{minutesWorked} minute and {secondCounter} seconds left.     ");
-                else if (secondCounter == 1) 
-                    Console.Write($"\r{minutesWorked} minutes and {secondCounter} second left.     ");
-                else 
-                    Console.Write($"\r{minutesWorked} minutes and {secondCounter} seconds left.     ");
-                if (secondCounter == 0)
-                {
-                    secondCounter = 60;
-                    minutesWorked--;
-                }
-                Thread.Sleep(1000);
-                secondCounter--;
-            }
-            
-            Console.Beep(220, 1000);
 
-            secondCounter = 0;
+            Timer(breakMinutes);
             
             amountRepeated++;
         }
@@ -297,4 +234,44 @@ Console.Write("Thank you for using me!");
 Console.Write("\n\nPress any key to exit...");
 
 Console.ReadKey(true);
+#endregion
+
+#region methods
+void Timer(int timerMinutes)
+{
+    int minutesWorked = timerMinutes;
+    int secondCounter = 0;
+            while (minutesWorked >= 0)
+            {
+                if (minutesWorked == 1 && secondCounter == 1) 
+                    Console.Write($"\r{minutesWorked} minute and {secondCounter} second left.     ");
+                else if (minutesWorked == 1) 
+                    Console.Write($"\r{minutesWorked} minute and {secondCounter} seconds left.     ");
+                else if (secondCounter == 1) 
+                    Console.Write($"\r{minutesWorked} minutes and {secondCounter} second left.     ");
+                else 
+                    Console.Write($"\r{minutesWorked} minutes and {secondCounter} seconds left.     ");
+                if (secondCounter == 0)
+                {
+                    secondCounter = 60;
+                    minutesWorked--;
+                }
+                Thread.Sleep(1000);
+                secondCounter--;
+            }
+            Console.Beep(440, 1000);
+}
+
+void Wait(bool run)
+{
+    if (run)
+    {
+        Console.Clear();
+        Console.Title = "Pomodoro - Waiting...";
+
+        Console.Write("Press any key to start the timer...");
+        Console.ReadKey(true);
+    }
+    else return;
+}
 #endregion
