@@ -12,13 +12,13 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.1.2",
+    "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Byte\\source\\repos\\PomodoroTimer\\PomodoroTimer.csproj",
-      "projectName": "PomodoroTimer",
-      "projectPath": "C:\\Users\\Byte\\source\\repos\\PomodoroTimer\\PomodoroTimer.csproj",
+      "projectUniqueName": "C:\\Users\\Byte\\RiderProjects\\PomodoroRewrite\\PomodoroRewrite.csproj",
+      "projectName": "PomodoroRewrite",
+      "projectPath": "C:\\Users\\Byte\\RiderProjects\\PomodoroRewrite\\PomodoroRewrite.csproj",
       "packagesPath": "C:\\Users\\Byte\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Byte\\source\\repos\\PomodoroTimer\\obj\\",
+      "outputPath": "C:\\Users\\Byte\\RiderProjects\\PomodoroRewrite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
