@@ -1,3 +1,6 @@
+using System;
+using System.Threading;
+
 class Pomodoro
 {
     #region properties

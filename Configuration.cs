@@ -1,3 +1,5 @@
+using System;
+
 static class Configuration
 {
     static public bool UseDefaultValues()
