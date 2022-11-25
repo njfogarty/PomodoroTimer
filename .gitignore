@@ -1,5 +1,5 @@
 bin/
-object/
+obj/
 .vs/
 properties/
 .idea/
