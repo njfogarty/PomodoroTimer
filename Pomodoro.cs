@@ -1,5 +1,4 @@
-using System;
-using System.Threading;
+using System.Runtime.InteropServices;
 
 class Pomodoro
 {
@@ -7,7 +6,7 @@ class Pomodoro
     public int Minutes { get; set; } = 25;
     public bool WaitForInput { get; set; } = false;
     public TimerType TimerType { get; set; }
-    public bool ShouldWait { get; set; } = false;
+    public bool ShouldWait { get; set; }
 
     #endregion
 
@@ -40,8 +39,7 @@ class Pomodoro
             Console.ReadKey(true);
         } 
         
-        if (TimerType == TimerType.Work) Console.Title = "Pomodoro - Working...";
-        else Console.Title = "Pomodoro - Breaking...";
+        Console.Title = (TimerType == TimerType.Work) ? "Pomodoro - Working..." : "Pomodoro - Resting...";
         Console.Clear();
 
         int minutesWorked = Minutes;
@@ -64,7 +62,8 @@ class Pomodoro
             secondCounter--;
         }
 
-        Console.Beep(440, 1000);
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Console.Beep(440, 1000);
+        else Console.Beep();
     }
     #endregion
 }

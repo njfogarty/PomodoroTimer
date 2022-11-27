@@ -1,12 +1,10 @@
-﻿using System;
-
-#region software_information
+﻿#region software_information
 // Title: Pomodoro Timer
 // Description: A simple command-line driven timer especially designed for the pomodoro technique.
 // Author: Noah Fogarty
 // Created: 23-Nov-2022
 
-string version = "rw-1.0.0";
+string version = "rw-1.1.0";
 #endregion
 
 #region variables

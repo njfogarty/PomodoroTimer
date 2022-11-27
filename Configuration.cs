@@ -1,8 +1,6 @@
-using System;
-
 static class Configuration
 {
-    static public bool UseDefaultValues()
+    public static bool UseDefaultValues()
     {
         while (true)
         {
@@ -11,12 +9,11 @@ static class Configuration
             
             Console.WriteLine("Would you like to use the default Pomodoro values?");
             Console.Write("Y/N: ");
-            string userChoice = Console.ReadLine();
-            return YesNo(userChoice);
+            return YesNo(Console.ReadLine());
         }
     }
 
-    static public bool ShouldWait()
+    public static bool ShouldWait()
     {
         while (true)
         {
@@ -25,81 +22,101 @@ static class Configuration
             
             Console.WriteLine("Should each cycle wait for your input before starting? ");
             Console.Write("Y/N: ");
-            string userChoice = Console.ReadLine();
-            return YesNo(userChoice);
+            return YesNo(Console.ReadLine());
         }
     }
 
-    static public int CycleAmount()
+    public static int CycleAmount()
     {
-        while (true)
-        {
+        int userChoice = 0;
             Console.Title = "Pomodoro - Configuration";
             Console.Clear();
-            
-            Console.Write("How many cycles should there be? ");
-            int userChoice = Convert.ToInt32(Console.ReadLine());
 
-            if (userChoice < 1) continue;
-            else return userChoice;
-        }
+            Console.Write("How many cycles should there be? ");
+            string? cycleAnswer = Console.ReadLine();
+
+            while (userChoice < 1)
+            {
+                while (!int.TryParse(cycleAnswer, out userChoice))
+                {
+                    Console.Write("Invalid choice, must be a number: ");
+                    cycleAnswer = Console.ReadLine();
+                }
+
+                while (int.TryParse(cycleAnswer, out userChoice) && userChoice < 1)
+                {
+                    Console.Write("Invalid choice, must be a number higher than 0: ");
+                    cycleAnswer = Console.ReadLine();
+                }
+            }
+
+            return userChoice;
     }
 
-    static public bool RepeatSame()
+    public static bool RepeatSame()
     {
         Console.Title = "Pomodoro - Repeat?";
         Console.Clear();
         
         Console.WriteLine("Would you like to repeat the timer with the same settings?");
         Console.Write("Y/N: ");
-        string userChoice = Console.ReadLine();
-
-        return YesNo(userChoice);
+        return YesNo(Console.ReadLine());
     }
 
-    static public bool RepeatDifferent()
+    public static bool RepeatDifferent()
     {
         Console.Title = "Pomodoro - Repeat?";
         Console.Clear();
         
         Console.WriteLine("Would you like to repeat the timer with different settings?");
         Console.Write("Y/N: ");
-        string userChoice = Console.ReadLine();
-
-        return YesNo(userChoice);
+        return YesNo(Console.ReadLine());
     }
 
-    static public Pomodoro TimerSetup(TimerType timerType)
+    public static Pomodoro TimerSetup(TimerType timerType)
     {
+        int minutes;
         Console.Title = "Pomodoro - Configuration";
         Console.Clear();
         
         Console.Write($"How many minutes should the {timerType} timer be? ");
-        int minutes = Convert.ToInt32(Console.ReadLine());
+           
+        string? minutesAnswer = Console.ReadLine();
+            
+        while (!int.TryParse(minutesAnswer, out minutes))
+        {
+            Console.Write("Invalid option, must be a number: ");
+            minutesAnswer = Console.ReadLine();
+        }
 
         return new Pomodoro(minutes, timerType);
     }
 
-    static private bool YesNo(string userChoice)
+    private static bool YesNo(string? userChoice)
     {
         while (true)
         {
-            Console.Clear();
-            
             switch (userChoice)
             {
+                case "YES":
+                case "YEs":
+                case "yES":
                 case "Yes":
+                case "yEs":
+                case "yeS":
                 case "yes":
                 case "Y":
                 case "y":
                     return true;
+                case "NO":
                 case "No":
+                case "nO":
                 case "no":
                 case "N":
                 case "n":
                     return false;
                 default:
-                    Console.Write("Invalid choice: ");
+                    Console.Write("Invalid choice, must be a yes or no answer: ");
                     userChoice = Console.ReadLine();
                     break;
             }
